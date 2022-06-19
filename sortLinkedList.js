@@ -71,7 +71,7 @@ function findMiddleOfList(head){
     return slowPtr;
 }
 
-//sort a linked list Time complexity O(nlogn) Space complexity O(nlogn)
+//sort a linked list Time complexity O(nlogn) Space complexity O(1)
 var sortList = function(head) {
     if(!head || !head.next){
         return head;
