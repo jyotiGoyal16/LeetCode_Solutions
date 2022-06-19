@@ -14,6 +14,38 @@
 //Program to delete Nth node from the end of the list
 //Time complexity O(n) Space complexity O(1)
 
+//This approach takes 2 pass
+var removeNthFromEnd = function(head, n) {
+    if(!head){
+        return head;
+    }
+    let length = 0;
+    let curr = head;
+    let nodeFromStart = 0;
+    let count = 0;
+    let prev = null;
+    
+    while(curr){
+        length++;
+        curr = curr.next;
+    }
+    
+    nodeFromStart = length - n;
+    curr = head;
+    if(length === n){
+        head = head.next;
+        return head;
+    }
+    while(curr && count < nodeFromStart){
+        prev = curr;
+        curr = curr.next;
+        count++;
+    }
+    prev.next = curr.next;
+    return head;
+};
+
+//one pass approach with same time and space complexity
 var removeNthFromEnd = function(head, n) {
    let pointer1 = head;
    let pointer2 = head;
