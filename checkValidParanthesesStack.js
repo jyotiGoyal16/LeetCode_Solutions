@@ -43,3 +43,28 @@ var isValid = function(s) {
     else
         return true;
 };
+
+
+//Another approach using hashmap
+//Same time and space complexity
+var isValid = function(s) {
+    let stack = [];
+    let popped = "";
+    let map = {
+        "(": ")",
+        "{": "}",
+        "[": "]"
+    }
+    
+    for(let paran of s){
+        if(paran in map){
+            stack.push(paran);
+        }else{
+            popped = stack.pop();
+            if(map[popped] !== paran){
+                return false;
+            }
+        }
+    }
+    return stack.length === 0 ? true : false;
+}
