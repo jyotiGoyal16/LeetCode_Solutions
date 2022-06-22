@@ -50,11 +50,7 @@ var postorderTraversal = function(root) {
     if(root && (!root.left && !root.right))
         return [root.val];
     
-    if(root.right) stack.push(root.right);
-    stack.push(root);
-    root = root.left; 
-    
-    while(stack.length > 0){
+    while(root || stack.length > 0){
         if(root){
             if(root.right) stack.push(root.right);
             stack.push(root);
